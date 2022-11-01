@@ -1,0 +1,90 @@
+[gd_scene load_steps=22 format=3 uid="uid://dsc8nb4p8t7fe"]
+
+[ext_resource type="Texture2D" uid="uid://b68n52w1ccq3e" path="res://Effects/blood/3/3_50x50.png" id="1_icmne"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="2_5nvn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyhlr"]
+atlas = ExtResource("1_icmne")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3pe4"]
+atlas = ExtResource("1_icmne")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m06h"]
+atlas = ExtResource("1_icmne")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3241"]
+atlas = ExtResource("1_icmne")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksxqm"]
+atlas = ExtResource("1_icmne")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj7jh"]
+atlas = ExtResource("1_icmne")
+region = Rect2(150, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3akke"]
+atlas = ExtResource("1_icmne")
+region = Rect2(200, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1t5s"]
+atlas = ExtResource("1_icmne")
+region = Rect2(250, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_colid"]
+atlas = ExtResource("1_icmne")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho14u"]
+atlas = ExtResource("1_icmne")
+region = Rect2(50, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftmaf"]
+atlas = ExtResource("1_icmne")
+region = Rect2(100, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ft6c"]
+atlas = ExtResource("1_icmne")
+region = Rect2(150, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnruw"]
+atlas = ExtResource("1_icmne")
+region = Rect2(200, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbbss"]
+atlas = ExtResource("1_icmne")
+region = Rect2(250, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1vh"]
+atlas = ExtResource("1_icmne")
+region = Rect2(0, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu0my"]
+atlas = ExtResource("1_icmne")
+region = Rect2(50, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf5pv"]
+atlas = ExtResource("1_icmne")
+region = Rect2(100, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b0ux"]
+atlas = ExtResource("1_icmne")
+region = Rect2(150, 150, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyapq"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tyhlr"), SubResource("AtlasTexture_r3pe4"), SubResource("AtlasTexture_2m06h"), SubResource("AtlasTexture_l3241"), SubResource("AtlasTexture_ksxqm"), SubResource("AtlasTexture_tj7jh"), SubResource("AtlasTexture_3akke"), SubResource("AtlasTexture_d1t5s"), SubResource("AtlasTexture_colid"), SubResource("AtlasTexture_ho14u"), SubResource("AtlasTexture_ftmaf"), SubResource("AtlasTexture_4ft6c"), SubResource("AtlasTexture_nnruw"), SubResource("AtlasTexture_gbbss"), SubResource("AtlasTexture_tx1vh"), SubResource("AtlasTexture_pu0my"), SubResource("AtlasTexture_hf5pv"), SubResource("AtlasTexture_8b0ux")],
+"loop": true,
+"name": &"Animate",
+"speed": 60.0
+}]
+
+[node name="blood_effect_3" type="AnimatedSprite2D"]
+frames = SubResource("SpriteFrames_wyapq")
+animation = &"Animate"
+playing = true
+script = ExtResource("2_5nvn1")

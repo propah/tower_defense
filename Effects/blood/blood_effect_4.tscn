@@ -1,0 +1,71 @@
+[gd_scene load_steps=17 format=3 uid="uid://dkq4uc5nsalq4"]
+
+[ext_resource type="Texture2D" uid="uid://bx6x0o7cb4t4c" path="res://Effects/blood/4/4-50x50.png" id="1_wwr4o"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="13_fsak6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6y6u"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7h18"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngp6m"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xeye"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbkn4"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wgd6"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8oum"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_107ts"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47mml"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa6lw"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(150, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3enf"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(200, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3y0s"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(250, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bimi3"]
+atlas = ExtResource("1_wwr4o")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyosj"]
+animations = [{
+"frames": [SubResource("AtlasTexture_g6y6u"), SubResource("AtlasTexture_c7h18"), SubResource("AtlasTexture_ngp6m"), SubResource("AtlasTexture_3xeye"), SubResource("AtlasTexture_mbkn4"), SubResource("AtlasTexture_5wgd6"), SubResource("AtlasTexture_s8oum"), SubResource("AtlasTexture_107ts"), SubResource("AtlasTexture_47mml"), SubResource("AtlasTexture_xa6lw"), SubResource("AtlasTexture_f3enf"), SubResource("AtlasTexture_a3y0s"), SubResource("AtlasTexture_bimi3")],
+"loop": true,
+"name": &"Animate",
+"speed": 30.0
+}]
+
+[node name="BloodEffect4" type="AnimatedSprite2D"]
+position = Vector2(3, 5)
+frames = SubResource("SpriteFrames_qyosj")
+animation = &"Animate"
+playing = true
+script = ExtResource("13_fsak6")

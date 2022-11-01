@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3 uid="uid://blwvdotfg1nbl"]
+
+[ext_resource type="Texture2D" uid="uid://bf55nxuar6h6u" path="res://Effects/blood/custom1/_50x50px.png" id="1_0qt55"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="2_hos32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbolt"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppy40"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pffuc"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(50, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnsvk"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(150, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et2yx"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(100, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1px1p"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(200, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wvjj"]
+atlas = ExtResource("1_0qt55")
+region = Rect2(150, 200, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uo30x"]
+animations = [{
+"frames": [SubResource("AtlasTexture_kbolt"), SubResource("AtlasTexture_ppy40"), SubResource("AtlasTexture_pffuc"), SubResource("AtlasTexture_wnsvk"), SubResource("AtlasTexture_et2yx"), SubResource("AtlasTexture_1px1p"), SubResource("AtlasTexture_3wvjj")],
+"loop": true,
+"name": &"Animate",
+"speed": 10.0
+}]
+
+[node name="blood_effect_custom_2" type="AnimatedSprite2D"]
+frames = SubResource("SpriteFrames_uo30x")
+animation = &"Animate"
+playing = true
+script = ExtResource("2_hos32")

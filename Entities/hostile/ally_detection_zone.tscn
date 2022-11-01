@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp5j8lpuo0pte"]
+
+[ext_resource type="Script" path="res://Entities/hostile/ally_detection_zone.gd" id="1_tc5o2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56utq"]
+radius = 80.0
+
+[node name="AllyDetectionZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_tc5o2")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+modulate = Color(1, 1, 1, 0.168627)
+shape = SubResource("CircleShape2D_56utq")
+
+[connection signal="body_entered" from="." to="." method="_on_ally_detection_zone_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_ally_detection_zone_body_exited"]
