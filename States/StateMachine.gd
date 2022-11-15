@@ -12,6 +12,7 @@ signal transitioned(state_name)
 # The current active state. At the start of the game, we get the `initial_state`.
 @onready var state = get_node(initial_state)
 
+@onready var current_state_name: String = "Move"
 
 func _ready() -> void:
 	await owner.ready
@@ -34,16 +35,18 @@ func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
 
 
-# This function calls the current state's exit() function, then changes the active state,
-# and calls its enter function.
-# It optionally takes a `msg` dictionary to pass to the next state's enter() function.
+#func new_timestamp():
+#	var tick = Time.get_ticks_msec()
+#	var ms = str(tick)
+#	ms.left(ms.length() - 1)
+#	var timestamp = str(tick/3600000)+":"+str(tick/60000).pad_zeros(2)+":"+str(tick/1000).pad_zeros(2)+"."+ms+"\t"
+#	return timestamp
+
+
 func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
-	# Safety check, you could use an assert() here to report an error if the state name is incorrect.
-	# We don't use an assert here to help with code reuse. If you reuse a state in different state machines
-	# but you don't want them all, they won't be able to transition to states that aren't in the scene tree.
 	if not has_node(target_state_name):
 		return
-
+	current_state_name = target_state_name
 	state.exit()
 	state = get_node(target_state_name)
 	state.enter(msg)

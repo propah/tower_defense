@@ -1,4 +1,4 @@
-extends KingState
+extends NecromancerState
 
 var target
 var anim_finished: float
@@ -20,7 +20,7 @@ func update(_delta: float) -> void:
 		if reference.get_node("SwordHitBox").get_overlapping_areas() != []:
 			did_hit = true
 
-	if not is_instance_valid(target):
+	if not is_instance_valid(target): 
 		emit_signal("target_killed", target)
 		state_machine.transition_to("Move")
 
@@ -41,3 +41,4 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	anim_finished = false
 	did_hit = false
+

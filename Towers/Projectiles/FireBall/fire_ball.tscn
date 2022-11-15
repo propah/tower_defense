@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://hvyrhjv7fdsr"]
+
+[ext_resource type="Script" path="res://Towers/Projectiles/Projectile.gd" id="1_djsav"]
+[ext_resource type="PackedScene" uid="uid://5csu47juvkri" path="res://Hit_Hurt_Boxes/projectile_hit_box.tscn" id="2_akdsf"]
+[ext_resource type="Texture2D" uid="uid://b3fkmsw4tfcmi" path="res://Towers/Projectiles/FireBall/Fireball.png" id="2_t5tye"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpeay"]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prknv"]
+atlas = ExtResource("2_t5tye")
+region = Rect2(0, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odh4r"]
+atlas = ExtResource("2_t5tye")
+region = Rect2(32, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akjd2"]
+atlas = ExtResource("2_t5tye")
+region = Rect2(0, 8, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0mcm"]
+atlas = ExtResource("2_t5tye")
+region = Rect2(32, 8, 32, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cug3h"]
+animations = [{
+"frames": [SubResource("AtlasTexture_prknv"), SubResource("AtlasTexture_odh4r"), SubResource("AtlasTexture_akjd2"), SubResource("AtlasTexture_p0mcm")],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[node name="FireBall" type="Node2D"]
+z_index = 1
+script = ExtResource("1_djsav")
+
+[node name="ProjectileHitBox" parent="." instance=ExtResource("2_akdsf")]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2d" parent="ProjectileHitBox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hpeay")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0)
+frames = SubResource("SpriteFrames_cug3h")
+animation = &"Idle"
+playing = true
+
+[editable path="ProjectileHitBox"]

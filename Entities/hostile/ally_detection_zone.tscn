@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp5j8lpuo0pte"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Entities/hostile/ally_detection_zone.gd" id="1_tc5o2"]
 

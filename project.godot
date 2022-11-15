@@ -19,6 +19,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Entities/friendly/enemy_detection_zone.gd"
 }, {
+"base": "Node",
+"class": &"EntityStats",
+"language": &"GDScript",
+"path": "res://Entities/Stats/stats.gd"
+}, {
+"base": "Node2D",
+"class": &"FireTower",
+"language": &"GDScript",
+"path": "res://Towers/FireTower/FreTower.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"King",
 "language": &"GDScript",
@@ -28,6 +38,21 @@ _global_script_classes=[{
 "class": &"KingState",
 "language": &"GDScript",
 "path": "res://Entities/friendly/king/States/KingState.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Necromancer",
+"language": &"GDScript",
+"path": "res://Entities/hostile/Necromancer/Necromancer.gd"
+}, {
+"base": "State",
+"class": &"NecromancerState",
+"language": &"GDScript",
+"path": "res://Entities/hostile/Necromancer/States/NecromancerState.gd"
+}, {
+"base": "Node2D",
+"class": &"Projectile",
+"language": &"GDScript",
+"path": "res://Towers/Projectiles/Projectile.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Skeleton",
@@ -50,26 +75,31 @@ _global_script_classes=[{
 "path": "res://States/StateMachine.gd"
 }, {
 "base": "Node",
-"class": &"Stats",
+"class": &"TowerStats",
 "language": &"GDScript",
-"path": "res://Entities/Stats/stats.gd"
+"path": "res://Towers/Stats/Stats.gd"
 }]
 _global_script_class_icons={
 "AllyDetectionZone": "",
 "EnemyDetectionZone": "",
+"EntityStats": "",
+"FireTower": "",
 "King": "",
 "KingState": "",
+"Necromancer": "",
+"NecromancerState": "",
+"Projectile": "",
 "Skeleton": "",
 "SkeletonState": "",
 "State": "",
 "StateMachine": "",
-"Stats": ""
+"TowerStats": ""
 }
 
 [application]
 
 config/name="project_f"
-run/main_scene="res://world/world.tscn"
+run/main_scene="res://Gui/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
 [display]

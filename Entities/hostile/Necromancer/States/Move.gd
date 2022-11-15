@@ -1,4 +1,4 @@
-extends SkeletonState
+extends NecromancerState
 
 var move_direction: Vector2 = Vector2.ZERO
 

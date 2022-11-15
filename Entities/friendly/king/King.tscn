@@ -1,10 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://dopipqixvn2vx"]
+[gd_scene load_steps=22 format=3 uid="uid://dopipqixvn2vx"]
 
 [ext_resource type="Script" path="res://Entities/friendly/king/King.gd" id="1_e87i5"]
+[ext_resource type="PackedScene" uid="uid://cf6rswdlhrx5s" path="res://Entities/friendly/enemy_detection_zone.tscn" id="2_erkea"]
 [ext_resource type="Texture2D" uid="uid://c8kq7mcrejabi" path="res://Entities/friendly/king/MiniKingMan.png" id="2_xbh52"]
 [ext_resource type="PackedScene" uid="uid://dktufhxsvv1x1" path="res://Hit_Hurt_Boxes/hurt_box.tscn" id="3_1wrrc"]
 [ext_resource type="PackedScene" uid="uid://c8fwx00fmg65p" path="res://Hit_Hurt_Boxes/hit_box.tscn" id="4_djouu"]
 [ext_resource type="PackedScene" uid="uid://nace8txxr12o" path="res://Entities/Stats/stats.tscn" id="5_mgj48"]
+[ext_resource type="PackedScene" uid="uid://dqr1ypao736lu" path="res://States/state_machine.tscn" id="7_lnrib"]
+[ext_resource type="Script" path="res://Entities/friendly/king/States/Move.gd" id="8_t8s70"]
+[ext_resource type="Script" path="res://Entities/friendly/king/States/Die.gd" id="9_s3fcv"]
+[ext_resource type="Script" path="res://Entities/friendly/king/States/Fight.gd" id="10_pr8gf"]
+[ext_resource type="Script" path="res://Entities/friendly/king/States/Idle.gd" id="11_qch2y"]
+[ext_resource type="Script" path="res://Entities/friendly/king/States/Chase.gd" id="12_vftms"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mywk6"]
 radius = 2.0
@@ -26,51 +33,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [54, 55, 56, 57, 58, 59, 60, 61, 62]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("SwordHitBox/CollisionShape2d:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack_animation_finish"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SwordHitBox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 2,
-"values": [Vector2(-3, -6), Vector2(-7, -8), Vector2(5, -8), Vector2(10, -4), Vector2(7, -1), Vector2(5, -1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SwordHitBox:rotation")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 2,
-"values": [0.0, -0.853466, -1.11003, 0.0, 1.56556, 1.5708]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SwordHitBox/CollisionShape2d:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 2,
@@ -141,34 +110,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SwordHitBox:position")
+tracks/1/path = NodePath("SwordHitBox/CollisionShape2d:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3, -4)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SwordHitBox:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SwordHitBox/CollisionShape2d:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -195,7 +140,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqi5i"]
 _data = {
 "Attack": SubResource("Animation_235no"),
-"Death": SubResource("Animation_jxd1m"),
+"Die": SubResource("Animation_jxd1m"),
 "Idle": SubResource("Animation_s5eki"),
 "RESET": SubResource("Animation_dsa5q"),
 "Run": SubResource("Animation_uqd23")
@@ -204,17 +149,19 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripkx"]
 size = Vector2(12, 14.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ys58m"]
-radius = 5.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5b26"]
+size = Vector2(13.5, 11)
 
 [node name="King" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 4
 script = ExtResource("1_e87i5")
 
+[node name="EnemyDetectionZone" parent="." instance=ExtResource("2_erkea")]
+
 [node name="Stats" parent="." instance=ExtResource("5_mgj48")]
-speed = 140
+max_health = 70
+speed = 50
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -11)
@@ -243,17 +190,41 @@ position = Vector2(0, -2.75)
 shape = SubResource("RectangleShape2D_ripkx")
 
 [node name="SwordHitBox" parent="." instance=ExtResource("4_djouu")]
-position = Vector2(-3, -4)
 collision_layer = 16
 collision_mask = 8
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2d" parent="SwordHitBox" index="0"]
-shape = SubResource("CapsuleShape2D_ys58m")
+position = Vector2(7, -3.5)
+shape = SubResource("RectangleShape2D_w5b26")
 disabled = true
 
-[connection signal="die" from="Stats" to="." method="_on_stats_die"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[node name="NavigationAgent2d" type="NavigationAgent2D" parent="."]
 
+[node name="StateMachine" parent="." instance=ExtResource("7_lnrib")]
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("8_t8s70")
+
+[node name="Fight" type="Node" parent="StateMachine"]
+script = ExtResource("10_pr8gf")
+
+[node name="Timer" type="Timer" parent="StateMachine/Fight"]
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource("9_s3fcv")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("11_qch2y")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("12_vftms")
+
+[connection signal="body_entered" from="EnemyDetectionZone" to="StateMachine/Idle" method="_on_enemy_detection_zone_body_entered"]
+[connection signal="die" from="Stats" to="." method="_on_stats_die"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Fight" method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="StateMachine/Fight/Timer" to="StateMachine/Fight" method="_on_timer_timeout"]
+
+[editable path="EnemyDetectionZone"]
 [editable path="HurtBox"]
 [editable path="SwordHitBox"]

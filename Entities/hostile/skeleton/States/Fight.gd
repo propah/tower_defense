@@ -7,7 +7,7 @@ var did_hit: bool
 @onready var timer: Timer = $Timer
 signal target_killed(target)
 
-func physics_update(_delta: float) -> void:
+func update(_delta: float) -> void:
 	rest_time = (1 - reference.get_node("AnimationPlayer").current_animation_length)/reference.stats.attack_speed
 	
 	if anim_finished:
@@ -19,8 +19,8 @@ func physics_update(_delta: float) -> void:
 		reference._play_animation("Attack", reference.stats.attack_speed)
 		if reference.get_node("SwordHitBox").get_overlapping_areas() != []:
 			did_hit = true
-	
-	if not is_instance_valid(target):
+
+	if not is_instance_valid(target): 
 		emit_signal("target_killed", target)
 		state_machine.transition_to("Move")
 
@@ -38,7 +38,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		timer.start()
 	
 func _on_timer_timeout() -> void:
+	timer.stop()
 	anim_finished = false
 	did_hit = false
-	timer.stop()
 

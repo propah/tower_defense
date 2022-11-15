@@ -1,16 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://32ry6uxpxg7x"]
+[gd_scene load_steps=39 format=3 uid="uid://bb6l7mer5lbqw"]
 
-[ext_resource type="Texture2D" uid="uid://ddrc2hfd30e0x" path="res://world/textures/plains.png" id="1_2cv6e"]
-[ext_resource type="Texture2D" uid="uid://copl22twdvl07" path="res://world/textures/grass.png" id="2_jim3n"]
-[ext_resource type="Texture2D" uid="uid://bavyj01nt2q3a" path="res://world/textures/water_animated.png" id="2_t2ey7"]
-[ext_resource type="Texture2D" uid="uid://dog183ftoi8yy" path="res://world/textures/objects.png" id="3_o8254"]
-[ext_resource type="Texture2D" uid="uid://itmkd2p2g6xi" path="res://world/textures/decor_16x16.png" id="4_k8xs6"]
-[ext_resource type="PackedScene" uid="uid://fdpd7y1ipe5f" path="res://Towers/FireTower/fre_tower.tscn" id="6_is57y"]
-[ext_resource type="PackedScene" uid="uid://dtcoc6twoksqn" path="res://Entities/hostile/skeleton/skelenton.tscn" id="7_2gmit"]
-[ext_resource type="PackedScene" uid="uid://d0raijpy3jcms" path="res://Entities/Spawner/spawner.tscn" id="8_qrwqq"]
-[ext_resource type="PackedScene" uid="uid://cyqrqs3opwc83" path="res://world/main_camera.tscn" id="8_qymei"]
-[ext_resource type="PackedScene" uid="uid://dopipqixvn2vx" path="res://Entities/friendly/king/King.tscn" id="10_dsynl"]
-[ext_resource type="PackedScene" uid="uid://fy85yt8p8kgo" path="res://Entities/hostile/Necromancer/Necromancer.tscn" id="11_qrib6"]
+[ext_resource type="Script" path="res://Maps/Map1.gd" id="1_q2g4q"]
+[ext_resource type="Texture2D" uid="uid://ddrc2hfd30e0x" path="res://world/textures/plains.png" id="2_pd72t"]
+[ext_resource type="Texture2D" uid="uid://bavyj01nt2q3a" path="res://world/textures/water_animated.png" id="3_y2uls"]
+[ext_resource type="Texture2D" uid="uid://copl22twdvl07" path="res://world/textures/grass.png" id="4_uo0td"]
+[ext_resource type="Texture2D" uid="uid://dog183ftoi8yy" path="res://world/textures/objects.png" id="5_vs71t"]
+[ext_resource type="Texture2D" uid="uid://itmkd2p2g6xi" path="res://world/textures/decor_16x16.png" id="6_iwjs4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_xl7b3"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -123,7 +118,7 @@ polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s3px1"]
-texture = ExtResource("1_2cv6e")
+texture = ExtResource("2_pd72t")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -416,7 +411,7 @@ texture = ExtResource("1_2cv6e")
 3:11/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tyvli"]
-texture = ExtResource("2_t2ey7")
+texture = ExtResource("3_y2uls")
 0:0/animation_columns = 6
 0:0/animation_speed = 5.0
 0:0/animation_frame_0/duration = 1.0
@@ -575,7 +570,7 @@ texture = ExtResource("2_t2ey7")
 0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_24fnt"]
-texture = ExtResource("2_jim3n")
+texture = ExtResource("4_uo0td")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1
@@ -583,7 +578,7 @@ texture = ExtResource("2_jim3n")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mv3yk"]
-texture = ExtResource("3_o8254")
+texture = ExtResource("5_vs71t")
 0:0/0 = 0
 0:0/0/y_sort_origin = 1
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -794,7 +789,7 @@ polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xoa8h"]
-texture = ExtResource("4_k8xs6")
+texture = ExtResource("6_iwjs4")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -860,7 +855,7 @@ texture = ExtResource("4_k8xs6")
 3:4/0/physics_layer_0/angular_velocity = 0.0
 3:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_11eqx")
 
-[sub_resource type="TileSet" id="TileSet_6mdu7"]
+[sub_resource type="TileSet" id="TileSet_64exp"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
@@ -875,12 +870,13 @@ sources/7 = SubResource("TileSetAtlasSource_mv3yk")
 sources/2 = SubResource("TileSetAtlasSource_tyvli")
 sources/8 = SubResource("TileSetAtlasSource_xoa8h")
 
-[node name="World" type="Node2D"]
+[node name="Map1" type="Node"]
+script = ExtResource("1_q2g4q")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
 y_sort_enabled = true
-tile_set = SubResource("TileSet_6mdu7")
+tile_set = SubResource("TileSet_64exp")
 collision_visibility_mode = 1
 format = 2
 layer_0/name = "Ground"
@@ -892,30 +888,3 @@ layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
-
-[node name="Skelenton" parent="TileMap" instance=ExtResource("7_2gmit")]
-position = Vector2(1247, 713)
-
-[node name="FreTower7" parent="TileMap" instance=ExtResource("6_is57y")]
-position = Vector2(408, 697)
-
-[node name="Spawner" parent="TileMap" instance=ExtResource("8_qrwqq")]
-position = Vector2(1081, 722)
-mob = ExtResource("7_2gmit")
-spawn_timer = 0.2
-y_range = 90.0
-
-[node name="Camera2D" parent="." instance=ExtResource("8_qymei")]
-position = Vector2(1098, 765)
-
-[node name="King" parent="." instance=ExtResource("10_dsynl")]
-position = Vector2(757, 697)
-
-[node name="King2" parent="." instance=ExtResource("10_dsynl")]
-position = Vector2(759, 651)
-
-[node name="King3" parent="." instance=ExtResource("10_dsynl")]
-position = Vector2(744, 798)
-
-[node name="Necromancer" parent="." instance=ExtResource("11_qrib6")]
-position = Vector2(1043, 727)

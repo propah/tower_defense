@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://Entities/friendly/enemy_detection_zone.gd" id="1_b0gvb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysdlp"]
-radius = 80.0
+radius = 160.003
 
 [node name="enemy_detection_zone" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
 script = ExtResource("1_b0gvb")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]

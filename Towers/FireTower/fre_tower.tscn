@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://fdpd7y1ipe5f"]
+
+[ext_resource type="Script" path="res://Towers/FireTower/FreTower.gd" id="1_8a44l"]
+[ext_resource type="Texture2D" uid="uid://ispudi3qpq5" path="res://Towers/FireTower/FireTower.png" id="2_8h4l8"]
+[ext_resource type="PackedScene" uid="uid://cf6rswdlhrx5s" path="res://Entities/friendly/enemy_detection_zone.tscn" id="3_1t38n"]
+[ext_resource type="PackedScene" uid="uid://bp2b8flt8x7vw" path="res://Towers/Stats/stats.tscn" id="4_p36ct"]
+
+[sub_resource type="Animation" id="Animation_nxwpi"]
+resource_name = "Idle"
+length = 0.9
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 0, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_wqaq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sos21"]
+_data = {
+"Idle": SubResource("Animation_nxwpi"),
+"RESET": SubResource("Animation_wqaq2")
+}
+
+[node name="FireTower" type="Node2D"]
+z_index = 1
+script = ExtResource("1_8a44l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("2_8h4l8")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sos21")
+}
+
+[node name="EnemyDetectionZone" parent="." instance=ExtResource("3_1t38n")]
+
+[node name="FireCooldown" type="Timer" parent="."]
+
+[node name="Stats" parent="." instance=ExtResource("4_p36ct")]
+
+[node name="ProjectileSpawnLocation" type="Marker2D" parent="."]
+position = Vector2(0, -30)
+
+[connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
+
+[editable path="EnemyDetectionZone"]
